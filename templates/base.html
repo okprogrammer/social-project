@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'simple_social/css/master.css' %}">
+  </head>
+  <body>
+    <nav class="navbar  mynav" role="navigation" id="navbar">
+      			<div class="container">
+
+              <a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+
+      					<ul class="nav navbar-nav navbar-right">
+      						{% if user.is_authenticated %}
+                        <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+                        <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+                        <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
+                        <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
+      						{% else %}
+      						      <li><a href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
+      						      <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+      						      <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+      						{% endif %}
+      					</ul>
+
+
+
+      			</div>
+      		</nav>
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>
